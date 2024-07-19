@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Verificar Estado del Carnet</title>
+    <link rel="icon" href="unerg.png" type="image/x-icon">
+
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+        }
+
+        .form-container h2 {
+            margin-top: 0;
+        }
+
+        .form-container label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        .form-container input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+        }
+
+        .form-container button {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #1b7ceb;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #0251e4;
+        }
+
+        .result-container {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .result-container img {
+            max-width: 200px;
+            margin: 20px auto;
+        }
+
+        .result-container button {
+            display: inline-block;
+            padding: 10px;
+            background-color: #34bfe9;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .result-container button:hover {
+            background-color: #07528f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Verificar Estado del Carnet</h2>
+        <label for="codigo">Ingrese el código:</label>
+        <input type="text" id="codigo" required autofocus>
+        <button type="button" onclick="verificarCarnet()">Verificar</button>
+    </div>
+
+    <div id="result" class="result-container" style="display: none;">
+        <h1> ¡Generado con éxito!</h1>
+        <img id="imagen" src="carnet.png" alt="Ejemplo de carnet">
+        <button onclick="imprimir()">Imprimir</button>
+    </div>
+
+    <script>
+        function verificarCarnet() {
+            var codigo = document.getElementById('codigo').value;
+            if (codigo) {
+                if (codigo === "1234") {
+                    alert("El carnet no está listo");
+                } else {
+                    document.getElementById('imagen').src = 'carnet.png';
+                    document.getElementById('result').style.display = 'block';
+                }
+            }
+        }
+        function imprimir() {
+            // Aquí puedes realizar la lógica para imprimir el carnet
+            alert('Imprimiendo carnet...');
+        }
+
+        document.getElementById('codigo').addEventListener('keyup', function (event) {
+            if (event.key === 'Enter') {
+                verificarCarnet();
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generar Carnet</title>
+    <link rel="icon" href="unerg.png" type="image/x-icon">
+
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            background-image: url('horizontes.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fdfdfd;
+            border-radius: 5px;
+        }
+
+        .form-container h2 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-container h2 img {
+            margin-right: 10px;
+            max-height: 80px;
+        }
+
+        .form-container label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="number"],
+        .form-container input[type="file"] {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+        }
+
+        .form-container button {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #0c7ac4;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #0a93ac;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background-color: #0ef5c3;
+            color: #0326eb;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            animation: moveButton 2s linear infinite; /* Aplicar animación */
+        }
+
+        @keyframes moveButton {
+            0% {
+                transform: translateX(0); /* Posición inicial */
+            }
+            50% {
+                transform: translateX(20px); /* Posición intermedia */
+            }
+            100% {
+                transform: translateX(0); /* Posición final (igual a la inicial) */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2><img src="unerg.png" alt="Logo" /> Registro de carnet</h2>
+        <form>
+            <label for="nombres">Nombres:</label>
+            <input type="text" id="nombres" name="nombres" required>
+        
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" id="apellidos" name="apellidos" required>
+        
+            <label for="cedula">Cédula:</label>
+            <input type="text" id="cedula" name="cedula" required>
+        
+            <label for="carrera">Carrera:</label>
+            <input type="text" id="carrera" name="carrera" required>
+        
+            <label for="semestre">Semestre:</label>
+            <input type="number" id="semestre" name="semestre" required>
+        
+            <label for="anio">Año:</label>
+            <input type="number" id="anio" name="anio" required>
+        
+            <label for="constancia">Constancia de Estudio (PDF):</label>
+            <input type="file" id="constancia" name="constancia" accept="application/pdf" required>
+        
+            <label for="foto">Foto (JPG, PNG):</label>
+            <input type="file" id="foto" name="foto" accept="image/jpeg, image/png" required>
+        
+            <button type="submit">Enviar Datos.</button>
+        </form>
+    </div>
+
+    <button class="back-button" onclick="goToEmptyInterface()">Verificar estado de carnet</button>
+
+    <script>
+        function generateRandomCode() {
+            var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            var code = '';
+            var length = 8;
+
+            for (var i = 0; i < length; i++) {
+                var index = Math.floor(Math.random() * characters.length);
+                code += characters.charAt(index);
+            }
+
+            return code;
+        }
+
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Verificar si los campos requeridos están llenos
+            var nombres = document.getElementById('nombres').value;
+            var apellidos = document.getElementById('apellidos').value;
+            var cedula = document.getElementById('cedula').value;
+            var carrera = document.getElementById('carrera').value;
+            var semestre = document.getElementById('semestre').value;
+            var anio = document.getElementById('anio').value;
+            var constancia = document.getElementById('constancia').value;
+
+            if (nombres && apellidos && cedula && carrera && semestre && anio && constancia) {
+                var codigo = generateRandomCode();
+                alert('Datos enviados a Control de Estudio. En espera de aprobación. Este es su código: ' + codigo);
+                document.querySelector('form').reset();
+            } else {
+                alert('Por favor, complete todos los campos requeridos.');
+            }
+        });
+
+        function goToEmptyInterface() {
+            window.location.href = 'estado.html';
+        }
+    </script>
+</body>
+</html>
+</html>

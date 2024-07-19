@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Carnetización Unerg</title>
+    <link rel="icon" href="unerg.png" type="image/x-icon">
+
+    <meta charset="UTF-8">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        .options-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 600px;
+        }
+
+        .option {
+            text-align: center;
+            margin: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: box-shadow 0.3s;
+        }
+
+        .option:hover {
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .option img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        .option-title {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="options-container">
+        <div class="option" onclick="location.href='generar.html';">
+            <img src="logoregistro.jpg" alt="Generar Carnet">
+            <div class="option-title">Generar Carnet</div>
+        </div>
+        <div class="option" onclick="location.href='recuperar.html';">
+            <img src="logorecuperar.png" alt="Recuperar Carnet">
+            <div class="option-title">Recuperar Carnet</div>
+        </div>
+        <div class="option" onclick="location.href='actualizar.html';">
+            <img src="logoactualizar.jpg" alt="Actualizar Carnet">
+            <div class="option-title">Actualizar Carnet</div>
+        </div>
+    </div>
+</body>
+</html>
